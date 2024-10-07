@@ -9,8 +9,8 @@ from datetime import datetime, timedelta
 import time, os, glob, pandas as pd
 
 # Input Comscore Login
-username = 'aaharper'
-password = '789Rh345'
+username = os.environ.get("USER")
+password = os.environ.get("PASS")
 
 # Choose Data Dumping Location
 download_dir = r"C:\Users\aharper\Documents\Comscore_Data\Circuit_Market_Share"
