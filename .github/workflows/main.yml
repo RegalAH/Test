@@ -25,5 +25,8 @@ jobs:
     - name: Install dependencies
       run: pip install -r requirements.txt
 
+    - name: Output current directory
+      run: pwd
+
     - name: Run Python script
       run: python Test.py
