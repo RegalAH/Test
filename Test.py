@@ -6,7 +6,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.keys import Keys
 from webdriver_manager.chrome import ChromeDriverManager
 from datetime import datetime, timedelta
-import time, os, glob, pandas as pd
+import time, os
 
 # Input Comscore Login
 username = os.environ.get("USER")
@@ -16,6 +16,12 @@ password = os.environ.get("PASS")
 download_dir = os.getcwd()
 
 chrome_options = webdriver.ChromeOptions()
+chrome_options.add_argument("--headless")  # Run in headless mode
+chrome_options.add_argument("--no-sandbox")  # Bypass OS security model
+chrome_options.add_argument("--disable-dev-shm-usage")  # Overcome limited resource problems
+chrome_options.add_argument("--disable-gpu")  # Applicable to Windows
+chrome_options.add_argument("--window-size=1920x1080")  # Set a specific window size
+
 prefs = {
     "download.default_directory": download_dir,
     "download.prompt_for_download": False,
@@ -41,13 +47,13 @@ driver.get("https://beta.boxofficeessentials.com/reports/flash/market_share_by_m
 export_button = WebDriverWait(driver, 10).until(
     EC.element_to_be_clickable((By.ID, 'export_menu'))
 )
-    
+
 export_button.click()
 
 xlsx_export_button = WebDriverWait(driver, 10).until(
     EC.element_to_be_clickable((By.XPATH, "//a[@title='XLSX Export']"))
 )
-    
+
 xlsx_export_button.click()
 
 time.sleep(3)
