@@ -13,7 +13,7 @@ username = os.environ.get("USER")
 password = os.environ.get("PASS")
 
 # Choose Data Dumping Location
-download_dir = r"C:\Users\aharper\Documents\Comscore_Data\Circuit_Market_Share"
+download_dir = os.getcwd()
 
 chrome_options = webdriver.ChromeOptions()
 prefs = {
