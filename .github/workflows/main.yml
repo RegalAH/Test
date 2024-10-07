@@ -9,8 +9,8 @@ jobs:
     runs-on: ubuntu-20.04
 
     env:
-      USER: ${{ secrets.Login }}
-      PASS: ${{ secrets.Password }}
+      USER: ${{ secrets.LOGIN }}
+      PASS: ${{ secrets.PASSWORD }}
 
     steps:
     - name: Check out the code
