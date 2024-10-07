@@ -13,7 +13,8 @@ username = os.environ.get("USER")
 password = os.environ.get("PASS")
 
 # Choose Data Dumping Location
-download_dir = os.getcwd()
+repo_root = os.path.dirname(os.path.abspath(__file__))  # Get the directory of the current script
+download_dir = os.path.join(repo_root, 'downloads')
 
 chrome_options = webdriver.ChromeOptions()
 chrome_options.add_argument("--headless")  # Run in headless mode
