@@ -31,8 +31,10 @@ jobs:
       run: |
         python Test.py  # Ensure this path is correct
 
-    - name: Upload downloaded file
-      uses: actions/upload-artifact@v3
-      with:
-        name: downloaded-file
-        path: '*.xlsx'  # Keep the pattern quoted
+    - name: Upload file to SharePoint
+      run: |
+        python upload_to_sharepoint.py  # Create this script for uploading the file
+      env:
+        SHAREPOINT_SITE_URL: https://regal.sharepoint.com/sites/Insights-Intl
+        SHAREPOINT_USERNAME: ${{ secrets.SHAREPOINT_USERNAME }}
+        SHAREPOINT_PASSWORD: ${{ secrets.SHAREPOINT_PASSWORD }}
